@@ -1,2 +1,2 @@
-# ProjetosJavaFaculdade
- Projetos do curso de SI da Unisinos em Java
+# Projetos Java Faculdade
+ Projetos do curso de Sistemas de Informação da Unisinos em Java
