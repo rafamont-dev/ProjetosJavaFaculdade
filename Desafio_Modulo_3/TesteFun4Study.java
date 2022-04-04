@@ -21,105 +21,71 @@ public class TesteFun4Study {
         Cidade cidade1 = new Cidade(cod1, desc1, uf1);
         Cidade cidade2 = new Cidade(cod2, desc2, uf2);
         
-        /* Captura de dados para o primeiro objeto
-         * Estudante via classe Teclado
+        // Declaração dos atributos em arrays
+        int cod[] = new int[4];
+        String nome[] = new String[4];
+        String dn[] = new String [4];
+        String email[] = new String[4];
+        String senha[] = new String[4];
+        Estudante aluno[] = new Estudante[4];
+        /* Captura de dados para 4 objetos
+         * Estudante via classe Teclado, utilizando 
+         * a estrutura de repetição for
          */
-        System.out.println("--- NOVO ESTUDANTE 1 ---");
-        int cod01 = Teclado.leInt("Digite o código do estudante: ");
-        String nome01 = Teclado.leString("Digite o nome: ");
-        String dn01 = Teclado.leString("Digite a data de nascimento: ");
-        String email01 = Teclado.leString("Digite o E-mail: ");
-        String senha01 = Teclado.leString("Digite a senha: ");
+        for (int i=0; i<4; i++){
+        System.out.printf("--- NOVO ESTUDANTE %d ---\n", i+1);
+        cod[i] = Teclado.leInt("Digite o código do estudante: ");
+        nome[i] = Teclado.leString("Digite o nome: ");
+        dn[i] = Teclado.leString("Digite a data de nascimento: ");
+        email[i] = Teclado.leString("Digite o E-mail: ");
+        senha[i] = Teclado.leString("Digite a senha: ");
         
         // Início da interface para seleção da cidade
-        Cidade cidadeEstudante01 = null;
-        int opc1;
+        Cidade cidadeEstudante = null;
+        int opc;
         
         /* Estrutura do-while para impedir o prosseguimento 
          * sem a seleção de uma opção de cidade válida 
          */
-        do {
+        do {    
             System.out.println("-----------------");
             System.out.println("Escolha a cidade:");
             System.out.println("-----------------");
             System.out.println("[1] " + cidade1.getDescricao());
             System.out.println("[2] " + cidade2.getDescricao());
             System.out.println("-----------------");
-            opc1 = Teclado.leInt("");
-        } while (opc1 < 1 || opc1 > 2);
+            opc = Teclado.leInt("");
+        } while (opc < 1 || opc > 2);
         
         // Estrutura switch para seleção entre as opções válidas
-        switch (opc1) {
+        switch (opc) {
             case 1:
-                cidadeEstudante01 = cidade1;
+                cidadeEstudante = cidade1;
                 break;
                 
             case 2:
-                cidadeEstudante01 = cidade2;
+                cidadeEstudante = cidade2;
                 break;
         }
         
-        // Instanciação do primeiro objeto Estudante
-        Estudante aluno1 = new Estudante(cod01, nome01, dn01, email01,
-        senha01, cidadeEstudante01);
+        // Instanciação do objeto Estudante
+        aluno[i] = new Estudante(cod[i], nome[i], dn[i], email[i],
+        senha[i], cidadeEstudante);
         
         /* Invocação do método criado na classe Estudante
          * para atualização de senha 
          */
-        aluno1.atualizaSenha();
+        aluno[i].atualizaSenha();
+    }
+        // Invocação dos métodos para exibição de dados dos estudantes.
+        aluno[0].exibeDados();
+        aluno[1].exibeDados();
+        aluno[2].exibeDados();
+        aluno[3].exibeDados();
         
-        /* Captura de dados para o segundo objeto
-         * Estudante via classe Teclado
-         */
-        System.out.println("--- NOVO ESTUDANTE 2 ---");
-        int cod02 = Teclado.leInt("Digite o código do estudante: ");
-        String nome02 = Teclado.leString("Digite o nome: ");
-        String dn02 = Teclado.leString("Digite a data de nascimento: ");
-        String email02 = Teclado.leString("Digite o E-mail: ");
-        String senha02 = Teclado.leString("Digite a senha: ");
-        
-        // Início da interface para seleção da cidade
-        Cidade cidadeEstudante02 = null;
-        int opc2;
-        /* Estrutura do-while para impedir o prosseguimento 
-         * sem a seleção de uma opção de cidade válida 
-         */
-        do {
-            System.out.println("-----------------");
-            System.out.println("Escolha a cidade:");
-            System.out.println("-----------------");
-            System.out.println("[1] " + cidade1.getDescricao());
-            System.out.println("[2] " + cidade2.getDescricao());
-            System.out.println("-----------------");
-            opc2 = Teclado.leInt("");
-        } while (opc2 < 1 || opc2 > 2);
-        
-        // Estrutura switch para seleção entre as opções válidas
-        switch (opc2) {
-            case 1:
-                cidadeEstudante02 = cidade1;
-                break;
-                
-            case 2:
-                cidadeEstudante02 = cidade2;
-                break;
-        }
-        
-        // Instanciação do segundo objeto Estudante
-        Estudante aluno2 = new Estudante(cod02, nome02, dn02, email02,
-        senha02, cidadeEstudante02);
-        
-        /* Invocação do método criado na classe Estudante
-         * para atualização de senha 
-         */
-        aluno2.atualizaSenha();
-        
-        // Invocação do método para exibição de dados dos estudantes.
-        aluno1.exibeDados();
-        aluno2.exibeDados();
-        
-        // Invocação do método para exibiçao de dados das cidades.
+        // Invocação dos métodos para exibiçao de dados das cidades.
         cidade1.exibeDados();
-        cidade2.exibeDados();
-    }   
+        cidade2.exibeDados();    
+    
+    }
 }
